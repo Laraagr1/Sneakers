@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const port = 7000
 
+var autenticarRouter = require('./routes/autenticar');
+var createRouter = require('./routes/create');
 var basqueteRouter = require('./routes/basquete');
 var cadastroRouter = require('./routes/cadastro');
 var corridaRouter = require('./routes/corrida');
@@ -26,6 +28,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/create', createRouter);
+app.use('/autenticar', autenticarRouter);
 app.use('/basquete', basqueteRouter);
 app.use('/cadastro', cadastroRouter);
 app.use('/corrida', corridaRouter);
